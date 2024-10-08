@@ -6,6 +6,12 @@ The platform allows users to share insights, reviews, and tutorials about the la
 
 Designed with simplicity in mind, Gadget Gallery provides users with essential features for discovering, saving, and interacting with content related to gadgets.
 
+[_ADD HEROKU URL_ Link to Live Site]()
+
+[Link to Github Repository](https://github.com/SIMMI-K/Hackstatic-heroes)
+
+[Link to project ideas board (Miro.com)](https://miro.com/app/board/uXjVLWWWjCI=/)
+
 ## Key Features
 
 **Community Blog**: Users can browse gadget-related blog posts, share their own insights, and engage with content created by others.
@@ -37,4 +43,4 @@ Designed with simplicity in mind, Gadget Gallery provides users with essential f
 Categories and Tags: Enhanced content discovery through categorization and tagging of blog posts.
 Notifications: Alerts for users when new posts, comments, or replies are made.
 
-GADGET GALLERY
+[Link to Github Project Board](https://github.com/users/SIMMI-K/projects/4)
