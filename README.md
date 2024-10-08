@@ -37,4 +37,4 @@ Designed with simplicity in mind, Gadget Gallery provides users with essential f
 Categories and Tags: Enhanced content discovery through categorization and tagging of blog posts.
 Notifications: Alerts for users when new posts, comments, or replies are made.
 
-> > > > > > > 26d10c0 (Start Readme)
+GADGET GALLERY
