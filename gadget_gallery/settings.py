@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+import cloudinary
 if os.path.isfile('env.py'):
     import env
 
@@ -28,10 +29,11 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # Add each team members workspace to access
 ALLOWED_HOSTS = [
+    '8000-simmik-hackstaticheroes-xkkbai1acp5.ws.codeinstitute-ide.net',
     '8000-simmik-hackstaticheroes-dies4od16at.ws.codeinstitute-ide.net',
     '8000-simmik-hackstaticheroes-5pxm9amrd9b.ws.codeinstitute-ide.net',
     '.herokuapp.com']
@@ -46,6 +48,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary_storage',
+    'cloudinary',
     'blog',
     'userbio',
 ]
