@@ -29,8 +29,13 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-simmik-hackstaticheroes-dies4od16at.ws.codeinstitute-ide.net','.herokuapp.com']
-
+# Add each team members workspace to access
+ALLOWED_HOSTS = [
+    '8000-simmik-hackstaticheroes-dies4od16at.ws.codeinstitute-ide.net',
+    '8000-simmik-hackstaticheroes-xkkbai1acp5.ws.codeinstitute-ide.net',
+    '8000-simmik-hackstaticheroes-dies4od16at.ws.codeinstitute-ide.net',
+    '8000-simmik-hackstaticheroes-5pxm9amrd9b.ws.codeinstitute-ide.net',
+    '.herokuapp.com']
 
 # Application definition
 
@@ -87,6 +92,11 @@ WSGI_APPLICATION = 'gadget_gallery.wsgi.application'
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.codeinstitute-ide.net/",
+    "https://*.herokuapp.com"
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
