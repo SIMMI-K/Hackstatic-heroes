@@ -33,6 +33,7 @@ DEBUG = False
 
 # Add each team members workspace to access
 ALLOWED_HOSTS = [
+    '8000-simmik-hackstaticheroes-xkkbai1acp5.ws.codeinstitute-ide.net',
     '8000-simmik-hackstaticheroes-dies4od16at.ws.codeinstitute-ide.net',
     '8000-simmik-hackstaticheroes-5pxm9amrd9b.ws.codeinstitute-ide.net',
     '.herokuapp.com']
