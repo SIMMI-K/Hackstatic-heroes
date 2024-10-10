@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
-
+import cloudinary
 import dj_database_url
 if os.path.isfile('env.py'):
     import env
@@ -56,7 +56,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'crispy_forms',
     'crispy_bootstrap5',
-    'django_summernote',
     'cloudinary',
     'blog',
     'userbio',
