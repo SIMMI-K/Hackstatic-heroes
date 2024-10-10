@@ -3,9 +3,11 @@ from django.http import HttpResponse
 from .models import Post
 from .forms import CommentForm
 
+
 def post_list(request):
     posts = Post.objects.all().order_by('-created_on')
     return render(request, 'blog/post_list.html', {'posts': posts})
+
 
 def post_detail(request, slug):
     post = get_object_or_404(Post, slug=slug)
@@ -18,4 +20,6 @@ def post_detail(request, slug):
             return redirect('post_detail', slug=post.slug)
     else:
         form = CommentForm()
-    return render(request, 'blog/post_detail.html', {'post': post, 'form': form})
+    return render(
+        request, 'blog/post_detail.html', {'post': post, 'form': form}
+    )
