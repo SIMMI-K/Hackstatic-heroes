@@ -42,7 +42,7 @@
       <div class="container-fluid">
         <a
           class="navbar-brand"
-          href="{% url 'blog' %}"
+          href="{% url 'post_list' %}"
           aria-label="Click Gadget Gallery logo to go to the blog"
           ><span class="brand">Gadget<span class="thin">Gallery</span></span></a
         >
@@ -63,7 +63,7 @@
               <a
                 class="nav-link {% if request.path == blog_url %}active{% endif %}"
                 aria-current="page"
-                href="{% url 'blog' %}"
+                href="{% url 'post_list' %}"
                 >Blog</a
               >
             </li>
