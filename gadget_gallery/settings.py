@@ -29,13 +29,14 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 # Add each team members workspace to access
 ALLOWED_HOSTS = [
     '8000-simmik-hackstaticheroes-xkkbai1acp5.ws.codeinstitute-ide.net',
     '8000-simmik-hackstaticheroes-dies4od16at.ws.codeinstitute-ide.net',
     '8000-simmik-hackstaticheroes-5pxm9amrd9b.ws.codeinstitute-ide.net',
+    '8000-simmik-hackstaticheroes-95akm91yihp.ws.codeinstitute-ide.net',
     '.herokuapp.com']
 
 
