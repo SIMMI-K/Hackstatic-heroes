@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>{{ user_profile.user.username }}'s Profile</h1>
+    <!-- Display profile picture -->
+    {% if user_profile.profile_picture %}
+    <img src="{{ user_profile.profile_picture.url }}" alt="Profile Picture" width="150">
+    {% else %}
+    <img src="{% static 'images/nobody.jpg' %}" alt="Default Profile Picture" width="150">
+    {% endif %}
+    <p><strong>Bio:</strong> {{ user_profile.bio }}</p>
+    <p><strong>Member since:</strong> {{ user_profile.created_on }}</p>
+
+    <!-- Add the Edit and Delete Profile button -->
+    <a href="{% url 'edit_userbio' %}" class="btn btn-primary mt-3">Edit Profile</a>
+    <a href="{% url 'delete_userbio' %}" class="btn btn-danger">Delete Profile</a>
+
+
+    <h2>Bookmarks</h2>
+    <ul>
+        {% for bookmark in user_bookmarks %}
+        <li>
+            <strong>Post:</strong> <a href="{% url 'post_detail' bookmark.post.slug %}">{{ bookmark.post.title }}</a>
+            <br>
+            <strong>Note:</strong> {{ bookmark.note|default:"No note added" }}
+            <br>
+            <strong>Added on:</strong> {{ bookmark.created_on }}
+        </li>
+        {% empty %}
+        <li>No bookmarks added yet.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
