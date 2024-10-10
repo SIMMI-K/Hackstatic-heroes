@@ -1,5 +1,5 @@
 {% load static %}
-{% url 'blog' as blog_url %}
+{% url 'post_list' as blog_url %}
 {% url 'userbio' as userbio_url %}
 {% url 'account_login' as login_url %}
 {% url 'account_signup' as signup_url %}
@@ -36,49 +36,79 @@
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 
-<body class="d-flex flex-column h-100 main-bg">
-  <!-- navigation -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-white">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="{% url 'post_list' %}"
-        aria-label="Click Gadget Gallery logo to go to the blog"><span class="brand">Gadget<span
-            class="thin">Gallery</span></span></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link {% if request.path == blog_url %}active{% endif %}" aria-current="page"
-              href="{% url 'post_list' %}">post_list</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link {% if request.path == userbio_url %}active{% endif %}" aria-current="page"
-              href="{% url 'userbio' %}">User Bio</a>
-          </li>
-        </ul>
-        <ul class="navbar-nav mb-2 mb-lg-0">
-          {% if user.is_authenticated %}
-          <li class="login-out" id="logout-button">
-            <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page"
-              href="{% url 'account_logout' %}">Logout</a>
-          </li>
-          {% else %}
-          <li class="login-out" id="register-button">
-            <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"
-              href="{% url 'account_signup' %}">Register</a>
-          </li>
-          <li class="login-out" id="login-button">
-            <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page"
-              href="{% url 'account_login' %}">Login</a>
-          </li>
-          {% endif %}
-        </ul>
-        <span class="navbar-text text-muted">Discover Tech Trends</span>
+  <body class="d-flex flex-column h-100 main-bg">
+    <!-- navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+      <div class="container-fluid">
+        <a
+          class="navbar-brand"
+          href="{% url 'blog' %}"
+          aria-label="Click Gadget Gallery logo to go to the blog"
+          ><span class="brand">Gadget<span class="thin">Gallery</span></span></a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarText"
+          aria-controls="navbarText"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a
+                class="nav-link {% if request.path == blog_url %}active{% endif %}"
+                aria-current="page"
+                href="{% url 'blog' %}"
+                >Blog</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link {% if request.path == userbio_url %}active{% endif %}"
+                aria-current="page"
+                href="{% url 'userbio' %}"
+                >User Bio</a
+              >
+            </li>
+          </ul>
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            {% if user.is_authenticated %}
+            <li class="login-out" id="logout-button">
+              <a
+                class="nav-link {% if request.path == logout_url %}active{% endif %}"
+                aria-current="page"
+                href="{% url 'account_logout' %}"
+                >Logout</a
+              >
+            </li>
+            {% else %}
+            <li class="login-out" id="register-button">
+              <a
+                class="nav-link {% if request.path == signup_url %}active{% endif %}"
+                aria-current="page"
+                href="{% url 'account_signup' %}"
+                >Register</a
+              >
+            </li>
+            <li class="login-out" id="login-button">
+              <a
+                class="nav-link {% if request.path == login_url %}active{% endif %}"
+                aria-current="page"
+                href="{% url 'account_login' %}"
+                >Login</a
+              >
+            </li>
+            {% endif %}
+          </ul>
+          <span class="navbar-text text-muted">Discover Tech Trends</span>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
 
   <!-- displaying Django messages -->
   <div class="container">
