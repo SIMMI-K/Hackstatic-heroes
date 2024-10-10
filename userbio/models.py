@@ -1,4 +1,4 @@
-from django.conf import settings  # Ensure compatibility with custom user models later
+from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
@@ -10,18 +10,20 @@ from django.dispatch import receiver
 
 # This signal will trigger whenever a User is created
 @receiver(post_save, sender=User)
-def create_user_profile(sender, instance, create, **kwargs):
+def create_user_profile(sender, instance, created, **kwargs):
     if created:
-        UserProfile.objects.creat(user=instance)
-        
+        UserProfile.objects.create(user=instance)
+
+
 # This will save the UserProfile whenever the User is saved
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
-    instance.userprofile.save()
+    user_profile, created = UserProfile.objects.get_or_create(user=instance)
+    user_profile.save()
     
 
 class UserProfile(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(blank=True, null=True)
     profile_picture = CloudinaryField('image', default='placeholder')
     created_on = models.DateTimeField(auto_now_add=True)
