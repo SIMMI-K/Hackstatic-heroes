@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>{{ user_profile.user.username }}'s Profile</h1>
+    <img src="{{ user_profile.profile_picture.url }}" alt="Profile picture" width="150">
+    <p><strong>Bio:</strong> {{ user_profile.bio }}</p>
+    <p><strong>Member since:</strong> {{ user_profile.created_on }}</p>
+
+    <h2>Bookmarks</h2>
+    <ul>
+        {% for bookmark in user_bookmarks %}
+        <li>
+            <strong>Post:</strong> <a href="{% url 'post_detail' bookmark.post.slug %}">{{ bookmark.post.title }}</a>
+            <br>
+            <strong>Note:</strong> {{ bookmark.note|default:"No note added" }}
+            <br>
+            <strong>Added on:</strong> {{ bookmark.created_on }}
+        </li>
+        {% empty %}
+        <li>No bookmarks added yet.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

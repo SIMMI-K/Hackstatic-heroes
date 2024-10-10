@@ -53,13 +53,13 @@
             <a class="nav-link {% if request.path == blog_url %}active{% endif %}" aria-current="page"
               href="{% url 'post_list' %}">post_list</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link {% if request.path == userbio_url %}active{% endif %}" aria-current="page"
-              href="{% url 'userbio' %}">User Bio</a>
-          </li>
         </ul>
         <ul class="navbar-nav mb-2 mb-lg-0">
           {% if user.is_authenticated %}
+          <li class="nav-item"></li>
+          <a class="nav-link {% if request.path == userbio_url %}active{% endif %}" aria-current="page"
+            href="{% url 'userbio' %}">User Bio</a>
+          </li>
           <li class="login-out" id="logout-button">
             <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page"
               href="{% url 'account_logout' %}">Logout</a>
