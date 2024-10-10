@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <!-- Profile Section -->
+    <div class="row">
+        <div class="col-md-4 text-center">
+            <h1>{{ user_profile.user.username }}'s Profile</h1>
+            <!-- Display profile picture -->
+            {% if user_profile.profile_picture %}
+            <img src="{{ user_profile.profile_picture.url }}" alt="Profile Picture"
+                class="img-fluid rounded-circle mb-3" style="max-width: 150px;">
+            {% else %}
+            <img src="{% static 'images/nobody.jpg' %}" alt="Default Profile Picture"
+                class="img-fluid rounded-circle mb-3" style="max-width: 150px;">
+            {% endif %}
+        </div>
+        <div class="col-md-8">
+            <p><strong>Bio:</strong> {{ user_profile.bio }}</p>
+            <p><strong>Member since:</strong> {{ user_profile.created_on }}</p>
+
+            <!-- Add the Edit and Delete Profile buttons -->
+            <a href="{% url 'edit_userbio' %}" class="btn btn-primary mt-3">Edit Profile</a>
+            <a href="{% url 'delete_userbio' %}" class="btn btn-danger mt-3 ms-2">Delete Profile</a>
+        </div>
+    </div>
+
+    <!-- Bookmarks Section -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <h2>Bookmarks</h2>
+            <ul class="list-group">
+                {% for bookmark in user_bookmarks %}
+                <li class="list-group-item">
+                    <strong>Post:</strong> <a
+                        href="{% url 'post_detail' bookmark.post.slug %}">{{ bookmark.post.title }}</a>
+                    <br>
+                    <strong>Note:</strong> {{ bookmark.note|default:"No note added" }}
+                    <br>
+                    <strong>Added on:</strong> {{ bookmark.created_on }}
+                </li>
+                {% empty %}
+                <li class="list-group-item">No bookmarks added yet.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
