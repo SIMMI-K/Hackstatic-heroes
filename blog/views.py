@@ -1,4 +1,5 @@
-from django.shortcuts import render, get_object_or_404, redirect  # or reverse?
+from django.shortcuts import render, get_object_or_404, redirect 
+from django.contrib.auth.decorators import login_required
 from django.views import generic
 from django.contrib import messages
 from django.http import HttpResponseRedirect
@@ -11,7 +12,7 @@ def post_list(request):
     posts = Post.objects.all().order_by('-created_on')
     return render(request, 'blog/post_list.html', {'posts': posts})
 
-
+@login_required
 def post_detail(request, slug):
     post = get_object_or_404(Post, slug=slug)
     comments = post.comments.all().order_by('-created_on')
@@ -41,7 +42,7 @@ def post_detail(request, slug):
         }
     )
 
-
+@login_required
 def comment_edit(request, slug, comment_id):
     post = get_object_or_404(Post, slug=slug)
     comment = get_object_or_404(Comment, id=comment_id)
@@ -67,7 +68,7 @@ def comment_edit(request, slug, comment_id):
         }
     )
 
-
+@login_required
 def comment_delete(request, slug, comment_id):
     post = get_object_or_404(Post, slug=slug)
     comment = get_object_or_404(Comment, id=comment_id)
