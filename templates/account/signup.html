@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block head_title %}
+{% trans "Sign up" %}{% endblock %}
+
+{% block content %}
+
+<!-- customized by: adding my own classes for styling to suit the Gadget Gallery website style -->
+<!-- customized by: adding a welcome paragraph -->
+<!-- customized by: removing horizontal rules -->
+<div class="signin-bg text-center text-dark">
+  <h3 class="mb-3">{% trans "Sign up" %}</h3>
+  <p>
+    {% blocktrans %} Welcome to the Gadget Gallery blog, where registered users can leave comments or explore gadget reviews and share their user bio! Already have an account? Please
+    <a class="link" href="{{ login_url }}">sign in</a> instead. {% endblocktrans %}
+  </p>
+  <div class="sign-in-form">
+    <div>
+      <form
+        class="signup"
+        id="signup_form"
+        method="post"
+        action="{% url 'account_signup' %}"
+      >
+        {% csrf_token %}
+        {{ form | crispy }}
+        {% if redirect_field_value %}
+        <input
+          type="hidden"
+          name="{{ redirect_field_name }}"
+          value="{{ redirect_field_value }}"
+        />
+        {% endif %}
+        <button
+          class="btn btn-register"
+          aria-label="Click this button to register after filling out the form"
+          type="submit"
+        >
+          {% trans "Sign up" %}
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
