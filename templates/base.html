@@ -38,7 +38,21 @@
 
 <body class="d-flex flex-column h-100 main-bg">
   <!-- navigation -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+
+  <!-- displaying Django messages -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        {% for message in messages %}
+        <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
+          {{ message | safe }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="{% url 'post_list' %}"
         aria-label="Click Gadget Gallery logo to go to the blog"><span class="brand">Gadget<span
@@ -80,40 +94,26 @@
     </div>
   </nav>
 
-  <!-- displaying Django messages -->
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8 offset-md-2">
-        {% for message in messages %}
-        <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
-          {{ message | safe }}
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        {% endfor %}
-      </div>
-    </div>
+  {% if user.is_authenticated %}
+  <div class="loggedin-container">
+    <p class="mt-3 logged-in">You are logged in as {{ user.username }}</p>
   </div>
+  {% else %}
+  <div class="loggedin-container">
+    <p class="mt-3 logged-in">You are not logged in</p>
+  </div>
+  {% endif %}
 
   <main class="flex-shrink-0 main-bg">
     <!-- Hero Section -->
     <section id="hero-outer">
-      <!-- hero image -->
-      <img src="{% static 'Images/gadgets.jpg' %}" class="hero-image" alt="Image of various gadgets" />
-      <div class="cover-text">
-        <h1>Gadget Gallery</h1>
-        <h2>"Tech for Everyone"</h2>
+      <!-- hero image
+      <img src="{% static 'images/gadgets.jpg' %}" class="hero-image" alt="Image of various gadgets" />
+      <div class="cover-text hero-image"> -->
+      <h1>Gadget Gallery</h1>
+      <h2>"Tech for Everyone"</h2>
       </div>
     </section>
-
-    {% if user.is_authenticated %}
-    <div class="loggedin-container">
-      <p class="mt-3 logged-in">You are logged in as {{ user.username }}</p>
-    </div>
-    {% else %}
-    <div class="loggedin-container">
-      <p class="mt-3 logged-in">You are not logged in</p>
-    </div>
-    {% endif %}
 
     {% block content %}
     <!-- content -->

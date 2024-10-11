@@ -1,161 +1,123 @@
+/* Color Variables */
+:root {
+    --light-bg: #F9FAFC;
+    /* Light background */
+    --white-bg: #FFFFFF;
+    /* White for cards and sections */
+    --dark-text: #333333;
+    /* Darker text for readability */
+    --primary-blue: #0874f762;
+    /* Dark blue for titles, links */
+    --secondary-blue: #188181;
+    /* Accent blue */
+    --accent-pink: #FF0077;
+    /* Bright coral/pink for pop */
+    --accent-yellow: #FFD700;
+    /* Yellow/gold for another accent */
+    --error-red: #E84610;
+    /* Red used for error/important */
+    --light-text: #333333;
+    /* Corrected */
+    --dark-bg: #FFFFFF;
+    /* Corrected to light background */
+    --lighter-bg: #F9FAFC;
+    /* Add definition for navbar background */
+}
+
+/* General */
 body {
-    background-color: #F9FAFC;
+    background-color: var(--dark-bg);
+    /* Light background now */
+    color: var(--light-text);
+    /* Dark text for readability */
 }
 
 .brand {
     font-family: Lato, sans-serif;
     font-size: 1.4rem;
     font-weight: 700;
-    color: #4A4A4F;
+    color: var(--primary-blue);
+    /* Updated for better visibility */
 }
 
-.red-o {
-    color: #E84610;
-}
-
-.thin {
-    font-weight: 300;
-}
-
-.light-bg {
-    background-color: #fff;
-}
-
-.dark-bg {
-    background-color: #445261;
-}
-
-.main-bg {
-    background-color: #F9FAFC;
-}
-
-.card {
-    border: none;
-    background-color: transparent;
-}
-
-.image-container {
-    position: relative;
-}
-
-.image-flash {
-    position: absolute;
-    bottom: 5%;
-    min-width: 30%;
-    left: -2px;
-    background-color: #188181;
-}
-
-.scale {
-    width: 100%;
-    height: auto;
-}
-
-.author {
-    color: white;
-    margin: 4px;
-    text-transform: uppercase;
-}
-
-.masthead {
-    margin-top: 10px;
-    overflow: hidden;
-    position: relative;
-    display: inline-block;
-    height: 33vh;
-    width: 100%;
-}
-
-.masthead-text {
-    background-color: #445261;
-    color: white;
-    position: relative;
-}
-
-.masthead-image {
-    position: relative;
-    overflow: hidden;
-}
-
-.masthead-image:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 90%;
-    height: 100%;
-    width: 150%;
-    background: #445261;
-    -webkit-transform: skew(15deg);
-    -moz-transform: skew(15deg);
-    transform: skew(15deg);
-    z-index: 100;
-}
-
-.post-link {
+a,
+.link {
+    color: var(--primary-blue);
+    /* Updated for visibility */
     text-decoration: none;
-    color: #445261;
 }
 
-.post-link:hover,
-.page-link {
-    color: #E84610;
+a:hover,
+.link:hover {
+    color: var(--accent-pink);
+    text-decoration: underline;
 }
 
-.post-title {
-    margin-top: 10%;
-    margin-left: 5%;
+.navbar {
+    background-color: var(--lighter-bg);
+    /* Light background for navbar */
 }
 
-.post-subtitle {
-    margin-left: 5%;
-    color: lightgray;
+.navbar-text {
+    color: var(--primary-blue);
+    /* Darker text for navbar */
 }
 
+/* Buttons */
 .btn-signup,
-.btn-edit {
-    background-color: #188181;
-    color: #fff;
+.btn-edit,
+.btn-delete {
+    background-color: var(--secondary-blue);
+    color: var(--light-text);
 }
 
 .btn-signup:hover,
 .btn-signup:active {
-    background-color: #fff;
-    color: #23BBBB;
-}
-
-.link {
-    color: #23BBBB;
-    text-decoration: none;
-}
-
-.link:hover,
-.link:active {
-    color: #445261;
-    text-decoration: underline;
+    background-color: var(--accent-pink);
+    color: var(--light-text);
 }
 
 .btn-like {
-    color: #E84610;
-    border: none;
+    color: var(--error-red);
     background: transparent;
 }
 
-.btn-delete {
-    color: #fff;
-    background: #E84610;
+.hero-image {
+    max-width: 90%;
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
 }
 
-.btn-like:hover,
-.btn-like:active {
-    color: #E84610;
-    background: transparent;
-    border: none;
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
 }
 
-.faded {
-    color: rgb(172, 175, 175);
+/* General heading styles */
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    text-align: center;
+    margin-bottom: 10px;
 }
 
-.approval {
-    color: rgb(222, 146, 168);
+h2 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--secondary-blue);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
 }
