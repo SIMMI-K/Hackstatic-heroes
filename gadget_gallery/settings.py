@@ -62,7 +62,7 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     'cloudinary',
     'blog',
-    'userbio',
+    'userbio.apps.UserbioConfig',
 ]
 
 SITE_ID = 1
