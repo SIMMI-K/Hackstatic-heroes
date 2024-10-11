@@ -1,4 +1,5 @@
-from django.shortcuts import render, get_object_or_404, redirect 
+from django.shortcuts import render, get_object_or_404, redirect, reverse
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
 from django.views import generic
 from django.contrib import messages
@@ -10,7 +11,20 @@ from .forms import CommentForm
 
 def post_list(request):
     posts = Post.objects.all().order_by('-created_on')
+    paginator = Paginator(posts, 6)  # Show 6 posts per page
+    
+    page = request.GET.get('page', 1)  # Get the page number from the request
+    try:
+        posts = paginator.page(page)  # Get the posts for the page
+    except PageNotAnInteger:
+        # If page is not an integer, deliver the first page
+        posts = paginator.page(1)
+    except EmptyPage:
+        # If the page is out of range, deliver the last page of results
+        posts = paginator.page(paginator.num_pages)
     return render(request, 'blog/post_list.html', {'posts': posts})
+
+
 
 @login_required
 def post_detail(request, slug):
