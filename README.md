@@ -44,3 +44,7 @@ Categories and Tags: Enhanced content discovery through categorization and taggi
 Notifications: Alerts for users when new posts, comments, or replies are made.
 
 [Link to Github Project Board](https://github.com/users/SIMMI-K/projects/4)
+
+Agile
+Source Control
+![Source control](static/images/readme/sourcecontrol.png)
