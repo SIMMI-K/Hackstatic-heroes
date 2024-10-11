@@ -6,7 +6,7 @@ The platform allows users to share insights, reviews, and tutorials about the la
 
 Designed with simplicity in mind, Gadget Gallery provides users with essential features for discovering, saving, and interacting with content related to gadgets.
 
-_*ADD HEROKU URL* Link to Live Site_
+[Link to Live Site](https://gadget-gallery-4374465d40df.herokuapp.com/)
 
 [Link to Github Repository](https://github.com/SIMMI-K/Hackstatic-heroes)
 
@@ -44,3 +44,7 @@ Categories and Tags: Enhanced content discovery through categorization and taggi
 Notifications: Alerts for users when new posts, comments, or replies are made.
 
 [Link to Github Project Board](https://github.com/users/SIMMI-K/projects/4)
+
+Agile
+Source Control
+![Source control](static/images/readme/sourcecontrol.png)

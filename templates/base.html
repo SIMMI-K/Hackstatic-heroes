@@ -36,79 +36,8 @@
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 
-  <body class="d-flex flex-column h-100 main-bg">
-    <!-- navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white">
-      <div class="container-fluid">
-        <a
-          class="navbar-brand"
-          href="{% url 'post_list' %}"
-          aria-label="Click Gadget Gallery logo to go to the blog"
-          ><span class="brand">Gadget<span class="thin">Gallery</span></span></a
-        >
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarText"
-          aria-controls="navbarText"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarText">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a
-                class="nav-link {% if request.path == blog_url %}active{% endif %}"
-                aria-current="page"
-                href="{% url 'post_list' %}"
-                >Blog</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link {% if request.path == userbio_url %}active{% endif %}"
-                aria-current="page"
-                href="{% url 'userbio' %}"
-                >User Bio</a
-              >
-            </li>
-          </ul>
-          <ul class="navbar-nav mb-2 mb-lg-0">
-            {% if user.is_authenticated %}
-            <li class="login-out" id="logout-button">
-              <a
-                class="nav-link {% if request.path == logout_url %}active{% endif %}"
-                aria-current="page"
-                href="{% url 'account_logout' %}"
-                >Logout</a
-              >
-            </li>
-            {% else %}
-            <li class="login-out" id="register-button">
-              <a
-                class="nav-link {% if request.path == signup_url %}active{% endif %}"
-                aria-current="page"
-                href="{% url 'account_signup' %}"
-                >Register</a
-              >
-            </li>
-            <li class="login-out" id="login-button">
-              <a
-                class="nav-link {% if request.path == login_url %}active{% endif %}"
-                aria-current="page"
-                href="{% url 'account_login' %}"
-                >Login</a
-              >
-            </li>
-            {% endif %}
-          </ul>
-          <span class="navbar-text text-muted">Discover Tech Trends</span>
-        </div>
-      </div>
-    </nav>
+<body class="d-flex flex-column h-100 main-bg">
+  <!-- navigation -->
 
   <!-- displaying Django messages -->
   <div class="container">
@@ -123,27 +52,68 @@
       </div>
     </div>
   </div>
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'post_list' %}"
+        aria-label="Click Gadget Gallery logo to go to the blog"><span class="brand">Gadget<span
+            class="thin">Gallery</span></span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link {% if request.path == blog_url %}active{% endif %}" aria-current="page"
+              href="{% url 'post_list' %}">Post List</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav mb-2 mb-lg-0">
+          {% if user.is_authenticated %}
+          <li class="nav-item"></li>
+          <a class="nav-link {% if request.path == userbio_url %}active{% endif %}" aria-current="page"
+            href="{% url 'userbio' %}">User Bio</a>
+          </li>
+          <li class="login-out" id="logout-button">
+            <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page"
+              href="{% url 'account_logout' %}">Logout</a>
+          </li>
+          {% else %}
+          <li class="login-out" id="register-button">
+            <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"
+              href="{% url 'account_signup' %}">Register</a>
+          </li>
+          <li class="login-out" id="login-button">
+            <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page"
+              href="{% url 'account_login' %}">Login</a>
+          </li>
+          {% endif %}
+        </ul>
+        <span class="navbar-text text-muted">Discover Tech Trends</span>
+      </div>
+    </div>
+  </nav>
+
+  {% if user.is_authenticated %}
+  <div class="loggedin-container">
+    <p class="mt-3 logged-in">You are logged in as {{ user.username }}</p>
+  </div>
+  {% else %}
+  <div class="loggedin-container">
+    <p class="mt-3 logged-in">You are not logged in</p>
+  </div>
+  {% endif %}
 
   <main class="flex-shrink-0 main-bg">
     <!-- Hero Section -->
     <section id="hero-outer">
-      <!-- hero image -->
-      <img src="{% static 'Images/gadgets.jpg' %}" class="hero-image" alt="Image of various gadgets" />
-      <div class="cover-text">
-        <h1>Gadget Gallery</h1>
-        <h2>"Tech for Everyone"</h2>
+      <!-- hero image
+      <img src="{% static 'images/gadgets.jpg' %}" class="hero-image" alt="Image of various gadgets" />
+      <div class="cover-text hero-image"> -->
+      <h1>Gadget Gallery</h1>
+      <h2>"Tech for Everyone"</h2>
       </div>
     </section>
-
-    {% if user.is_authenticated %}
-    <div class="loggedin-container">
-      <p class="mt-3 logged-in">You are logged in as {{ user.username }}</p>
-    </div>
-    {% else %}
-    <div class="loggedin-container">
-      <p class="mt-3 logged-in">You are not logged in</p>
-    </div>
-    {% endif %}
 
     {% block content %}
     <!-- content -->
