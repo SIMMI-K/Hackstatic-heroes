@@ -30,6 +30,10 @@ body {
     background-color: #F9FAFC;
 }
 
+.navbar-nav .nav-link {
+    color: #4A4A4F !important;
+}
+
 .card {
     border: none;
     background-color: transparent;
